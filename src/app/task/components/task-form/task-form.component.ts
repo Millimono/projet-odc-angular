@@ -27,8 +27,11 @@ export class TaskFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.taskId = this.route.snapshot.params['id'];
-    this.projectId = this.route.snapshot.params['projectId'];
+    this.route.parent?.params.subscribe((params) => {
+      this.projectId = +params['id'];
+    });
+
+    this.taskId = this.route.snapshot.params['taskId'];
     if (this.taskId) {
       this.loadTask(this.taskId);
     }
@@ -54,7 +57,7 @@ export class TaskFormComponent implements OnInit {
             project_id: this.projectId,
           });
         }
-        this.router.navigate([`/projects/${this.projectId}`]);
+        this.router.navigate([`/dashboard/projects/${this.projectId}`]);
       } catch (error) {
         console.error('Error saving task:', error);
       }

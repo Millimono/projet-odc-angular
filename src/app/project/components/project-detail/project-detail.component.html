@@ -9,8 +9,8 @@
       <p>{{ project.details }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button [routerLink]="['/projects/edit', project.id]">Edit Project</button>
-      <button mat-button [routerLink]="['/tasks/add', project.id]">Add Task</button>
+      <button mat-button [routerLink]="['/dashboard/projects/edit', project.id]">Edit Project</button>
+      <button mat-button [routerLink]="['tasks/add']">Add Task</button>
     </mat-card-actions>
   </mat-card>
 
@@ -24,7 +24,7 @@
         <p>{{ task.details }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button [routerLink]="['/tasks/edit', task.id]">Edit Task</button>
+        <button mat-button [routerLink]="['tasks/edit', task.id]">Edit Task</button>
       </mat-card-actions>
     </mat-card>
   </div>
