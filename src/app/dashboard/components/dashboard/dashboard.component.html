@@ -10,10 +10,14 @@
   <button mat-button routerLink="calendar"> Calendar </button>
   <button mat-button routerLink="reports"> Reports </button>
   <button mat-button routerLink="logout"> Logout </button>
+  <span class="example-spacer"></span>
+  <span *ngIf="temperature !== null" style="margin-right: 16px;background-color: aquamarine;color: black;">Current Temperature in {{ city }}: {{ temperature }}°C</span>
+  <input type="text" [(ngModel)]="city" placeholder="Enter city" style="margin-right: 16px; padding: 4px;">
+  <button mat-raised-button color="accent" (click)="getWeather()">Get Weather</button>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="over"  #drawer>
+  <mat-drawer mode="over" #drawer>
     <mat-list>
       <mat-list-item>
         <button mat-button routerLink="projects">
