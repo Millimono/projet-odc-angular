@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styleUrl: './project-list.component.css',
+  styleUrls: ['./project-list.component.css'],
 })
 export class ProjectListComponent implements OnInit {
   projects: any[] = [];
@@ -17,11 +17,19 @@ export class ProjectListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.projects = this.projectService.getProjects();
+    this.loadProjects();
+  }
+
+  async loadProjects() {
+    try {
+      this.projects = await this.projectService.getProjects();
+      console.log(this.projects); // Vérifiez que les projets sont bien récupérés
+    } catch (error) {
+      console.error('Error loading projects:', error);
+    }
   }
 
   viewDetails(id: number): void {
-    console.log('le id est :', id);
     this.router.navigate([id], { relativeTo: this.route });
   }
 }

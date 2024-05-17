@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task-detail',
   templateUrl: './task-detail.component.html',
-  styleUrl: './task-detail.component.css',
+  styleUrls: ['./task-detail.component.css'],
 })
-export class TaskDetailComponent {
+export class TaskDetailComponent implements OnInit {
   task: any;
 
   constructor(
@@ -17,6 +17,16 @@ export class TaskDetailComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.task = this.taskService.getTaskById(id);
+    this.loadTask(id);
+  }
+
+  async loadTask(id: string | null) {
+    if (id) {
+      try {
+        this.task = await this.taskService.getTaskById(+id);
+      } catch (error) {
+        console.error('Error loading task:', error);
+      }
+    }
   }
 }

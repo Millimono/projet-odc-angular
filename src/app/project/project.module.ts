@@ -9,9 +9,17 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectService } from './services/project.service';
 import { TaskRoutingModule } from '../task/task-routing.module';
 import { CalendarRoutingModule } from '../calendar/calendar-routing.module';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProjectListComponent, ProjectDetailComponent],
+  declarations: [
+    ProjectListComponent,
+    ProjectDetailComponent,
+    ProjectFormComponent,
+  ],
   imports: [
     CommonModule,
     ProjectRoutingModule,
@@ -20,6 +28,9 @@ import { CalendarRoutingModule } from '../calendar/calendar-routing.module';
     MatIconModule,
     TaskRoutingModule,
     CalendarRoutingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [ProjectService],
 })

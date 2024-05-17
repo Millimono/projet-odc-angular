@@ -1,81 +1,68 @@
 import { Injectable } from '@angular/core';
+import { SupabaseService } from '../../supabase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
-  private projects = [
-    {
-      id: 1,
-      name: 'Project 1',
-      description: 'Description 1',
-      details: 'Details of Project 1',
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      description: 'Description 2',
-      details: 'Details of Project 2',
-    },
-    {
-      id: 1,
-      name: 'Project 1',
-      description: 'Description 1',
-      details: 'Details of Project 1',
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      description: 'Description 2',
-      details: 'Details of Project 2',
-    },
-    {
-      id: 1,
-      name: 'Project 1',
-      description: 'Description 1',
-      details: 'Details of Project 1',
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      description: 'Description 2',
-      details: 'Details of Project 2',
-    },
+  constructor(private supabaseService: SupabaseService) {}
 
-    {
-      id: 1,
-      name: 'Project 1',
-      description: 'Description 1',
-      details: 'Details of Project 1',
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      description: 'Description 2',
-      details: 'Details of Project 2',
-    },
-    {
-      id: 1,
-      name: 'Project 1',
-      description: 'Description 1',
-      details: 'Details of Project 1',
-    },
-    {
-      id: 2,
-      name: 'Project 2',
-      description: 'Description 2',
-      details: 'Details of Project 2',
-    },
-    // Ajoutez d'autres projets ici
-  ];
-
-  constructor() {}
-
-  getProjects() {
-    return this.projects;
+  async getProjects() {
+    const { data, error } = await this.supabaseService.client
+      .from('projects')
+      .select('*');
+    if (error) {
+      console.error('Error fetching projects:', error);
+      throw error;
+    }
+    return data;
   }
 
-  getProjectById(id: any) {
-    return this.projects.find((project) => project.id === +id);
+  async getProjectById(id: number) {
+    const { data, error } = await this.supabaseService.client
+      .from('projects')
+      .select('*')
+      .eq('id', id)
+      .single();
+    if (error) {
+      console.error('Error fetching project by id:', error);
+      throw error;
+    }
+    return data;
+  }
+
+  async addProject(project: any) {
+    const { data, error } = await this.supabaseService.client
+      .from('projects')
+      .insert(project);
+    if (error) {
+      console.error('Error adding project:', error);
+      throw error;
+    }
+    return data;
+  }
+
+  async updateProject(id: number, project: any) {
+    const { data, error } = await this.supabaseService.client
+      .from('projects')
+      .update(project)
+      .eq('id', id);
+    if (error) {
+      console.error('Error updating project:', error);
+      throw error;
+    }
+    return data;
+  }
+
+  async deleteProject(id: number) {
+    const { data, error } = await this.supabaseService.client
+      .from('projects')
+      .delete()
+      .eq('id', id);
+    if (error) {
+      console.error('Error deleting project:', error);
+      throw error;
+    }
+    return data;
   }
 }

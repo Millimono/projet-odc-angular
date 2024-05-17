@@ -7,15 +7,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { TaskService } from './services/task.service';
 import { TaskRoutingModule } from './task-routing.module';
-
+import { TaskFormComponent } from './components/task-form/task-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [TaskListComponent, TaskDetailComponent],
+  declarations: [TaskListComponent, TaskDetailComponent, TaskFormComponent],
   imports: [
     CommonModule,
     TaskRoutingModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [TaskService],
 })
