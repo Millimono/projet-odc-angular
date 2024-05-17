@@ -11,7 +11,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskFormComponent implements OnInit {
   taskForm: FormGroup;
   taskId: number | null = null;
-  projectId!: number;
+  projectId: number | undefined;
 
   constructor(
     private fb: FormBuilder,

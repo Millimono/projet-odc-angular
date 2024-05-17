@@ -24,6 +24,7 @@
         <p>{{ task.details }}</p>
       </mat-card-content>
       <mat-card-actions>
+        <button mat-button [routerLink]="['tasks', task.id]">View Task</button>
         <button mat-button [routerLink]="['tasks/edit', task.id]">Edit Task</button>
       </mat-card-actions>
     </mat-card>
