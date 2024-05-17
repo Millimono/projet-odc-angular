@@ -1,0 +1,55 @@
+<!-- src/app/dashboard/components/dashboard/dashboard.component.html -->
+<mat-toolbar color="primary">
+  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon" (click)="drawer.toggle()">
+    menu
+  </mat-icon>
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="projects"> Projects </button>
+  <button mat-button routerLink="tasks"> Tasks </button>
+  <button mat-button routerLink="notifications"> Notifications </button>
+  <button mat-button routerLink="calendar"> Calendar </button>
+  <button mat-button routerLink="reports"> Reports </button>
+  <button mat-button routerLink="logout"> Logout </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="over"  #drawer>
+    <mat-list>
+      <mat-list-item>
+        <button mat-button routerLink="projects">
+          <mat-icon matListItemIcon>folder</mat-icon>
+          Projects
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="tasks">
+          <mat-icon matListItemIcon>assignment</mat-icon>
+          Tasks
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="notifications">
+          <mat-icon matListItemIcon>notifications</mat-icon>
+          Notifications
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="calendar">
+          <mat-icon matListItemIcon>calendar_today</mat-icon>
+          Calendar
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="reports">
+          <mat-icon matListItemIcon>bar_chart</mat-icon>
+          Reports
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content style="background-color: aqua;">
+    <div style="min-height: 800px;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,10 @@
+/* src/app/project/components/project-list/project-list.component.css */
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+mat-card {
+  width: 300px;
+}

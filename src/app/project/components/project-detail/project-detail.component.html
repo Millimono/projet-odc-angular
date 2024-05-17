@@ -1,0 +1,12 @@
+<!-- src/app/project/components/project-detail/project-detail.component.html -->
+<div class="project-detail" *ngIf="project">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ project.name }}</mat-card-title>
+      <mat-card-subtitle>{{ project.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ project.details }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

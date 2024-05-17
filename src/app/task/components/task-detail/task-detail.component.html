@@ -1,0 +1,12 @@
+<!-- src/app/task/components/task-detail/task-detail.component.html -->
+<div class="task-detail" *ngIf="task">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ task.name }}</mat-card-title>
+      <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ task.details }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
